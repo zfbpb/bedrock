@@ -1,0 +1,19 @@
+mysqldata/
+mysql/
+.phpintel/
+.DS_Store
+.idea
+
+# ignore OS generated files
+ehthumbs.db
+Thumbs.db
+
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip

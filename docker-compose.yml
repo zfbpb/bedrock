@@ -49,6 +49,17 @@ services:
     volumes:
       - ./html:/var/www/html/
 
+  utility:
+    build:
+      context: '.'
+      dockerfile: utility.dockerfile
+    container_name: utility
+    depends_on:
+      - php
+    volumes:
+      - ./html:/var/www/html
+      - /var/run/docker.sock:/var/run/docker.sock
+
 networks:
   frontend:
   backend:

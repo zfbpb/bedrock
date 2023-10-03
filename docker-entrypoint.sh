@@ -1,17 +1,29 @@
 #!/bin/sh
+freshInstall="y" # Nova instalacija?
 
-cd /var/www/html
+ENV_PATH="./.env" # Putanja do bedrock .env datoteke u html folderu
+
 echo ""
 echo "Installing Bedrock..."
 composer create-project roots/bedrock .
+echo ""
 
 echo ""
+echo "Exporting .env variables..."
+
+set -a
+. /usr/local/bin/.env
+set +a
+
+echo ""
+echo "Copying .env from /usr/local/bin to /var/www/html..."
+yes | cp -rf /usr/local/bin/.env /var/www/html
+ln ./.config/.env ./html/.env
+
 echo "Installing Sage theme..."
 cd /var/www/html/web/app/themes
+echo ""
 composer create-project roots/sage sage-demo
-
-# Putanja do .env datoteke
-ENV_PATH="./.env"
 
 # Provjerava postoji li .env datoteka na navedenoj putanji
 if [ -f "$ENV_PATH" ]; then
@@ -20,6 +32,11 @@ if [ -f "$ENV_PATH" ]; then
     cat "$ENV_PATH"
     echo ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>"
 else
+    echo ""
+    echo "############################"
+    echo "Nalazimo se na putanji: $(pwd) a ENV_PATH je na putanji $ENV_PATH"
+    echo "############################"
+    echo ""
     echo ".env datoteka ne postoji na putanji $ENV_PATH"
 fi
 

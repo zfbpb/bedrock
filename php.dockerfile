@@ -1,7 +1,6 @@
-# ARG PHP_VERSION=""
-# FROM php:${PHP_VERSION:+${PHP_VERSION}-}fpm
-
-FROM php:8.0-fpm as php-base
+ARG PHP_VERSION=""
+FROM php:${PHP_VERSION:+${PHP_VERSION}-}fpm as php-base
+# FROM php:8.0-fpm as php-base
 LABEL name=php-service
 
 # Install essential packages
@@ -20,7 +19,6 @@ RUN apt-get update \
   && rm -rf /var/lib/apt/lists/* \
   && apt-get clean
 
-# Continue from the base image
 FROM php-base
 
 # Install php extensions and related packages
@@ -51,5 +49,4 @@ RUN chmod +x /usr/local/bin/install-php-extensions && sync \
   && rm -rf /var/lib/apt/lists/* \
   && apt-get clean
 
-# Continue from the previous steps
 COPY ./build/php/fpm/pool.d /etc/php/fpm/pool.d

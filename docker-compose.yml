@@ -55,7 +55,7 @@ services:
       dockerfile: utility.dockerfile
     container_name: utility
     depends_on:
-      - php
+      - apache
     volumes:
       - ./html:/var/www/html
     networks:

@@ -58,7 +58,8 @@ services:
       - php
     volumes:
       - ./html:/var/www/html
-      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - backend
 
 networks:
   frontend:

@@ -57,7 +57,7 @@ services:
     depends_on:
       - apache
     volumes:
-      - ./html:/var/www/html
+      - ./html:/var/www/html/
     networks:
       - backend
 

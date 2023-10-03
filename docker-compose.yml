@@ -58,6 +58,7 @@ services:
       - apache
     volumes:
       - ./html:/var/www/html/
+      - ./build:/var/www/build/
     networks:
       - backend
 

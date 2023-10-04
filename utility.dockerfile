@@ -32,6 +32,8 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /var/www/html
 
+COPY ./build/.env.example /usr/local/bin/.env
+
 COPY  ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 

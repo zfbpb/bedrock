@@ -1,4 +1,3 @@
-ARG PHP_VERSION=""
 FROM php:${PHP_VERSION:+${PHP_VERSION}-}fpm as php-base
 
 LABEL name=php-service

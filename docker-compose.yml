@@ -27,7 +27,6 @@ services:
         APACHE_VERSION: ${APACHE_VERSION}
     container_name: local_apache
     depends_on:
-      - php
       - mysql
     networks:
       - frontend
@@ -44,10 +43,25 @@ services:
       args:
         PHP_VERSION: ${PHP_VERSION}
     container_name: local_php
+    depends_on:
+      - apache
     networks:
       - backend
     volumes:
       - ./html:/var/www/html/
+
+  bedrock:
+    build:
+      context: .
+      dockerfile: bedrock.dockerfile
+    container_name: bedrock
+    depends_on:
+      - php
+    volumes:
+      - ./html:/var/www/html/
+      - ./build:/var/www/build/
+    networks:
+      - backend
 
   utility:
     build:
@@ -57,8 +71,7 @@ services:
         GROUP_ID: 1000
       dockerfile: utility.dockerfile
     container_name: utility
-    depends_on:
-      - apache
+    restart: 'no'
     volumes:
       - ./html:/var/www/html/
       - ./build:/var/www/build/

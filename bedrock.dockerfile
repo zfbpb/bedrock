@@ -36,7 +36,14 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /var/www/html
 
+# Copying files
+COPY ./build/.env /usr/local/bin/.env
+COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+
+# Setting execute permissions
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
 # Setting user
 USER bedrock
 
-CMD ["tail", "-f", "/dev/null"]
+CMD ["/usr/local/bin/docker-entrypoint.sh"]

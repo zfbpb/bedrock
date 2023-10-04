@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   mysql:
-    image: mysql:${MYSQL_VERSION:-latest}
+    image: mysql:${MYSQL_VERSION}
     container_name: local_mysql
     # command: --default-authentication-plugin=caching_sha2_password
     # command: --default-authentication-plugin=mysql_native_password
@@ -14,14 +14,14 @@ services:
       - backend
     environment:
       MYSQL_ROOT_HOST: '%'
-      MYSQL_DATABASE: "${DB_NAME}"
-      MYSQL_ROOT_PASSWORD: "${DB_ROOT_PASSWORD}"
-      MYSQL_USER: "${DB_USERNAME}"
-      MYSQL_PASSWORD: "${DB_PASSWORD}"
+      MYSQL_DATABASE: "wordpress"
+      MYSQL_ROOT_PASSWORD: "somewordpress"
+      MYSQL_USER: "wordpress"
+      MYSQL_PASSWORD: "wordpress"
 
   apache:
     build:
-      context: '.'
+      context: .
       dockerfile: apache.dockerfile
       args:
         APACHE_VERSION: ${APACHE_VERSION}
@@ -39,7 +39,7 @@ services:
 
   php:
     build:
-      context: '.'
+      context: .
       dockerfile: php.dockerfile
       args:
         PHP_VERSION: ${PHP_VERSION}
@@ -51,7 +51,10 @@ services:
 
   utility:
     build:
-      context: '.'
+      context: .
+      args:
+        USER_ID: 1000
+        GROUP_ID: 1000
       dockerfile: utility.dockerfile
     container_name: utility
     depends_on:

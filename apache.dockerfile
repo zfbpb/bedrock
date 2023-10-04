@@ -1,6 +1,8 @@
 ARG APACHE_VERSION=
 FROM httpd:${APACHE_VERSION:+${APACHE_VERSION}-}alpine
 
+LABEL name=apache-service
+
 RUN apk update; \
   apk upgrade;
 

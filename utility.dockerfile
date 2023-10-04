@@ -1,4 +1,7 @@
-FROM php:8.0-cli
+# FROM php:8.0-cli
+FROM php:${PHP_VERSION:+${PHP_VERSION}-}cli
+
+LABEL name=utility-service
 
 ARG USER_ID=1000
 ARG GROUP_ID=1000

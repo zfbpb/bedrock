@@ -1,6 +1,6 @@
 ARG PHP_VERSION=""
 FROM php:${PHP_VERSION:+${PHP_VERSION}-}fpm as php-base
-# FROM php:8.0-fpm as php-base
+
 LABEL name=php-service
 
 # Install essential packages

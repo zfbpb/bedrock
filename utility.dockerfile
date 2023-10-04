@@ -1,5 +1,17 @@
 FROM php:8.0-cli
 
+ARG USER_ID=1000
+ARG GROUP_ID=1000
+
+# Instalirajte potrebne pakete
+RUN apt-get update && apt-get install -y \
+  sudo \
+  && rm -rf /var/lib/apt/lists/*
+
+# Add user & group
+RUN groupadd -g $GROUP_ID bedrock \
+  && useradd -m -u $USER_ID -g bedrock bedrock
+
 # Install tools and clean up unnecessary packages/files afterwards
 RUN apt-get update && apt-get install -y \
   git \
@@ -32,9 +44,11 @@ RUN apt-get update && apt-get install -y \
 
 WORKDIR /var/www/html
 
-COPY ./build/.env.example /usr/local/bin/.env
+COPY ./build/.env /usr/local/bin/.env
 
 COPY  ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
+
+USER bedrock
 
 CMD ["/usr/local/bin/docker-entrypoint.sh"]

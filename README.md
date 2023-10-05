@@ -9,6 +9,6 @@ docker-compose exec utility composer update -w var/www/html/web/app/themes/sage-
 
 docker-compose exec utility yarn install -w var/www/html/web/app/themes/sage-demo  
 
-
+docker-compose exec utility bash
 
 

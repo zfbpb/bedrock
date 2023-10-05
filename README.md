@@ -1,5 +1,6 @@
 # Bedrock/Sage10-MySql-Apache-PHP-Docker
-Readme comming soon.
+
+docker compose up bedrock
 
 docker-compose exec utility composer update // html bedrock
 

@@ -1,4 +1,7 @@
+ARG APACHE_VERSION
 FROM httpd:${APACHE_VERSION:+${APACHE_VERSION}-}alpine
+
+EXPOSE 80
 
 LABEL name=apache-service
 

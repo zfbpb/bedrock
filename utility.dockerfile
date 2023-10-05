@@ -1,3 +1,4 @@
+ARG PHP_VERSION
 FROM php:${PHP_VERSION:+${PHP_VERSION}-}cli
 
 LABEL name=utility-service

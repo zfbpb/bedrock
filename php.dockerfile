@@ -1,4 +1,7 @@
+ARG PHP_VERSION
 FROM php:${PHP_VERSION:+${PHP_VERSION}-}fpm as php-base
+
+EXPOSE 9000
 
 LABEL name=php-service
 

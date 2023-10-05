@@ -1,5 +1,11 @@
 #!/bin/sh
 
+if [ -d "/var/www/html/web" ]; then
+    echo "Bedrock is already installed, exiting."
+    echo "DONE."
+    exit 1
+fi
+
 echo "Cleaning the destination directory..."
 rm -rf ..?* .[!.]* *
 echo "DONE."

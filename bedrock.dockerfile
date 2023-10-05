@@ -17,6 +17,9 @@ RUN apt-get update && apt-get install -y \
   && rm -rf /var/lib/apt/lists/* \
   && apt-get clean
 
+# Setting user
+USER bedrock
+
 RUN mkdir -p /var/www/html
 
 WORKDIR /var/www/html
@@ -27,8 +30,5 @@ COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 # Setting execute permissions
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
-
-# Setting user
-USER bedrock
 
 CMD ["/usr/local/bin/docker-entrypoint.sh"]

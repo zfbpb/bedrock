@@ -54,6 +54,8 @@ services:
     build:
       context: .
       dockerfile: bedrock.dockerfile
+      args:
+        PHP_VERSION: ${PHP_VERSION}
     container_name: bedrock
     depends_on:
       - php
@@ -69,6 +71,8 @@ services:
       args:
         USER_ID: 1000
         GROUP_ID: 1000
+        PHP_VERSION: ${PHP_VERSION}
+        # NODE_VERSION: ${NODE_VERSION} ovo ne radi, možda to treba biti environment varijabla
       dockerfile: utility.dockerfile
     container_name: utility
     restart: 'no'

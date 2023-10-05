@@ -1,4 +1,4 @@
-# Bedrock/Sage10-MySql-Apache-PHP-Docker
+# Bedrock/Sage10-MySQL-Apache-PHP-Docker
 
 docker compose up bedrock
 

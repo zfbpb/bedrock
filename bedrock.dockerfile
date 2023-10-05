@@ -17,15 +17,12 @@ RUN apt-get update && apt-get install -y \
   && rm -rf /var/lib/apt/lists/* \
   && apt-get clean
 
-# Setting user
-USER bedrock
-
-RUN mkdir -p /var/www/html
+RUN mkdir -p /var/www/html && chown -R bedrock:bedrock /var/www/html
 
 WORKDIR /var/www/html
 
 # Copying files
-COPY ./build/.env /usr/local/bin/.env
+COPY --chown=bedrock:bedrock ./build/.env /usr/local/bin/.env
 COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 # Setting execute permissions

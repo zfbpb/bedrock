@@ -34,4 +34,8 @@ echo "Installing Sage theme..."
 composer create-project roots/sage $THEME_DIR_NAME
 echo "DONE."
 
+echo "Setting permissions for /html/web/app..."
+chmod 777 /var/www/html/web/app # I don't know how to solve this better for now
+echo "DONE."
+
 exec "$@"

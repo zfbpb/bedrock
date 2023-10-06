@@ -11,6 +11,8 @@ RUN apt-get update && apt-get install -y \
   git \
   curl \
   unzip \
+  jq \
+  moreutils \
   && curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer \
   && groupadd -g $GROUP_ID bedrock \
   && useradd -m -u $USER_ID -g bedrock bedrock \

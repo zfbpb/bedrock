@@ -22,6 +22,13 @@ echo "Copying .env from /usr/local/bin to /var/www/html..."
 yes | cp -rf /usr/local/bin/.env /var/www/html
 ln ./build/.env ./html/.env
 
+# Dodavanje Acorn plugina i konfiguracija odmah nakon instalacije Bedrocka
+echo "Installing Acorn plugin..."
+composer require roots/acorn
+echo "Configuring Acorn in composer.json..."
+jq '.scripts["post-autoload-dump"] += ["Roots\\Acorn\\ComposerScripts::postAutoloadDump"]' composer.json | sponge composer.json
+echo "DONE."
+
 cd /var/www/html/web/app/themes
 echo "Installing Sage theme..."
 composer create-project roots/sage $THEME_DIR_NAME

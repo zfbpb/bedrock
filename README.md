@@ -1,4 +1,4 @@
-# Dockerized Bedrock/Sage10 & LAMP Stack"
+# Dockerized Bedrock/Sage10 & LAMP Stack
 
 This project utilizes Docker to set up a development environment which includes MySQL, Apache, PHP, Bedrock, and several utility tools. It is defined using a docker compose file and accompanying Dockerfiles.
 

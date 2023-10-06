@@ -3,7 +3,6 @@
 This project utilizes Docker to set up a development environment which includes MySQL, Apache, PHP, Bedrock, and several utility tools. It is defined using a docker compose file and accompanying Dockerfiles.
 
 ## Quickstart
----
 
 After git clone, select versions of PHP, MySQL, Apache in .env and configure the WP_HOME and WP_SITEURL variables as needed in /build/.env, or leave the default values.
 

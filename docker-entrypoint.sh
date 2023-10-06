@@ -24,7 +24,7 @@ ln ./build/.env ./html/.env
 
 cd /var/www/html/web/app/themes
 echo "Installing Sage theme..."
-composer create-project roots/sage sage-demo
+composer create-project roots/sage $THEME_DIR_NAME
 echo "DONE."
 
 exec "$@"

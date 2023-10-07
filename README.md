@@ -75,3 +75,6 @@ docker-compose exec utility yarn build -w /var/www/html/web/app/themes/your-them
 ``` 
 Note: Ensure the Utility container is running before executing these commands.
 
+## License
+
+This project is licensed under the [MIT License](https://opensource.org/licenses/MIT). See the [LICENSE](LICENSE.md) file for details.

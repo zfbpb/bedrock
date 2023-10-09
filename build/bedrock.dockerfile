@@ -25,7 +25,7 @@ RUN mkdir -p /var/www/html && chown -R bedrock:bedrock /var/www/html
 WORKDIR /var/www/html
 
 # Copying files
-COPY --chown=bedrock:bedrock ./build/.env /usr/local/bin/.env
+COPY --chown=bedrock:bedrock ./.env /usr/local/bin/.env
 COPY ./docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
 
 # Setting execute permissions

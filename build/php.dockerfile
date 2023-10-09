@@ -51,4 +51,4 @@ RUN chmod +x /usr/local/bin/install-php-extensions && sync \
   && rm -rf /var/lib/apt/lists/* \
   && apt-get clean
 
-COPY ./build/php/fpm/pool.d /etc/php/fpm/pool.d
+COPY ./php/fpm/pool.d /etc/php/fpm/pool.d

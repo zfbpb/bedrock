@@ -21,7 +21,7 @@ services:
 
   apache:
     build:
-      context: .
+      context: ./build
       dockerfile: apache.dockerfile
       args:
         APACHE_VERSION: ${APACHE_VERSION}
@@ -38,7 +38,7 @@ services:
 
   php:
     build:
-      context: .
+      context: ./build
       dockerfile: php.dockerfile
       args:
         PHP_VERSION: ${PHP_VERSION}
@@ -52,7 +52,7 @@ services:
 
   bedrock:
     build:
-      context: .
+      context: ./build
       dockerfile: bedrock.dockerfile
       args:
         PHP_VERSION: ${PHP_VERSION}
@@ -67,7 +67,7 @@ services:
 
   utility:
     build:
-      context: .
+      context: ./build
       args:
         USER_ID: 1000
         GROUP_ID: 1000
